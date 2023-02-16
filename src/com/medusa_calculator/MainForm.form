@@ -68,7 +68,7 @@
           <font size="22" style="1"/>
           <foreground color="-1"/>
           <label value="÷"/>
-          <text value="÷"/>
+          <text resource-bundle="com/medusa_calculator/strings" key="btnDiv"/>
         </properties>
       </component>
       <component id="d6c34" class="javax.swing.JButton" binding="button8">
@@ -113,7 +113,7 @@
           <font size="22" style="1"/>
           <foreground color="-1"/>
           <label value="×"/>
-          <text value="×"/>
+          <text resource-bundle="com/medusa_calculator/strings" key="btnMul"/>
         </properties>
       </component>
       <component id="f72af" class="javax.swing.JButton" binding="button4">
@@ -143,7 +143,7 @@
           <font size="22" style="1"/>
           <foreground color="-1"/>
           <label value="-"/>
-          <text value="-"/>
+          <text resource-bundle="com/medusa_calculator/strings" key="btnSub"/>
         </properties>
       </component>
       <component id="7ea74" class="javax.swing.JButton" binding="button3">
@@ -203,7 +203,7 @@
           <font size="22" style="1"/>
           <foreground color="-1"/>
           <label value="+"/>
-          <text value="+"/>
+          <text resource-bundle="com/medusa_calculator/strings" key="btnAdd"/>
         </properties>
       </component>
       <component id="d4f69" class="javax.swing.JButton" binding="buttonEq">
@@ -262,7 +262,7 @@
           <background color="-13487566"/>
           <font size="22" style="1"/>
           <foreground color="-1"/>
-          <text value="Mod"/>
+          <text resource-bundle="com/medusa_calculator/strings" key="btnMod"/>
         </properties>
       </component>
       <component id="85161" class="javax.swing.JButton" binding="buttonSquare">
@@ -276,7 +276,7 @@
           <background color="-13487566"/>
           <font size="22" style="1"/>
           <foreground color="-1"/>
-          <text value="x²"/>
+          <text resource-bundle="com/medusa_calculator/strings" key="btnSquare"/>
         </properties>
       </component>
       <component id="5fc4" class="javax.swing.JButton" binding="buttonRoot">
@@ -304,7 +304,7 @@
           <background color="-13487566"/>
           <font size="22" style="1"/>
           <foreground color="-1"/>
-          <text value="Clr"/>
+          <text resource-bundle="com/medusa_calculator/strings" key="btnClear"/>
         </properties>
       </component>
       <component id="39c15" class="javax.swing.JTextField" binding="textField">

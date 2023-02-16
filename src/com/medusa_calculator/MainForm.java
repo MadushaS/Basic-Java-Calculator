@@ -3,7 +3,6 @@ package com.medusa_calculator;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.ContainerAdapter;
 import java.util.Objects;
 
 public class MainForm {
@@ -60,159 +59,82 @@ public class MainForm {
     }
     public MainForm() {
 
-        button0.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (!textField.getText().equals("0")){
-                    appendNum("0");
-                }
+        button0.addActionListener(e -> {
+            if (!textField.getText().equals("0")){
+                appendNum("0");
             }
         });
-        buttonPeriod.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (!textField.getText().contains(".") && !textField.getText().isEmpty()){
-                    appendNum(".",true);
-                    buttonPeriod.setEnabled(false);
-                }
+        buttonPeriod.addActionListener(e -> {
+            if (!textField.getText().contains(".") && !textField.getText().isEmpty()){
+                appendNum(".",true);
+                buttonPeriod.setEnabled(false);
             }
         });
-        buttonClear.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                clearText();
-                buttonPeriod.setEnabled(true);
+        buttonClear.addActionListener(e -> {
+            clearText();
+            buttonPeriod.setEnabled(true);
+        });
+        button1.addActionListener(e -> appendNum("1"));
+        button2.addActionListener(e -> appendNum("2"));
+        button3.addActionListener(e -> appendNum("3"));
+        button4.addActionListener(e -> appendNum("4"));
+        button5.addActionListener(e -> appendNum("5"));
+        button6.addActionListener(e -> appendNum("6"));
+        button7.addActionListener(e -> appendNum("7"));
+        button8.addActionListener(e -> appendNum("8"));
+        button9.addActionListener(e -> appendNum("9"));
+
+        buttonEq.addActionListener(e -> {
+            num2 = Double.parseDouble(textField.getText());
+            if(action == ACTION_ADD){
+                num1+=num2;
+                textField.setText(String.valueOf(num1));
+            } else if (action == ACTION_SUB) {
+                num1-=num2;
+                textField.setText(String.valueOf(num1));
+            } else if (action == ACTION_MUL) {
+                num1*=num2;
+                textField.setText(String.valueOf(num1));
+            } else if (action == ACTION_DIV) {
+                num1/=num2;
+                textField.setText(String.valueOf(num1));
+            } else if (action == ACTION_MOD) {
+                num1%=num2;
+                textField.setText(String.valueOf(num1));
             }
         });
-        button1.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                appendNum("1");
-            }
+        buttonPlus.addActionListener(e -> {
+            num1 = Double.parseDouble(textField.getText());
+            action=ACTION_ADD;
+            clearText();
         });
-        button2.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                appendNum("2");
-            }
+        buttonMinus.addActionListener(e -> {
+            num1 = Double.parseDouble(textField.getText());
+            action=ACTION_SUB;
+            clearText();
         });
-        button3.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                appendNum("3");
-            }
+        buttonMultiply.addActionListener(e -> {
+            num1 = Double.parseDouble(textField.getText());
+            action=ACTION_MUL;
+            clearText();
         });
-        button4.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                appendNum("4");
-            }
+        buttonDivide.addActionListener(e -> {
+            num1 = Double.parseDouble(textField.getText());
+            action=ACTION_DIV;
+            clearText();
         });
-        button5.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                appendNum("5");
-            }
+        buttonMod.addActionListener(e -> {
+            num1 = Double.parseDouble(textField.getText());
+            action=ACTION_MOD;
+            clearText();
         });
-        button6.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                appendNum("6");
-            }
+        buttonSquare.addActionListener(e -> {
+            double x = Double.parseDouble(textField.getText());
+            textField.setText(String.valueOf(Math.pow(x,2)));
         });
-        button7.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                appendNum("7");
-            }
-        });
-        button8.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                appendNum("8");
-            }
-        });
-        button9.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                appendNum("9");
-            }
-        });
-        buttonEq.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                num2 = Double.parseDouble(textField.getText());
-                if(action == ACTION_ADD){
-                    num1+=num2;
-                    textField.setText(String.valueOf(num1));
-                } else if (action == ACTION_SUB) {
-                    num1-=num2;
-                    textField.setText(String.valueOf(num1));
-                } else if (action == ACTION_MUL) {
-                    num1*=num2;
-                    textField.setText(String.valueOf(num1));
-                } else if (action == ACTION_DIV) {
-                    num1/=num2;
-                    textField.setText(String.valueOf(num1));
-                } else if (action == ACTION_MOD) {
-                    num1%=num2;
-                    textField.setText(String.valueOf(num1));
-                }
-            }
-        });
-        buttonPlus.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                num1 = Double.parseDouble(textField.getText());
-                action=ACTION_ADD;
-                clearText();
-            }
-        });
-        buttonMinus.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                num1 = Double.parseDouble(textField.getText());
-                action=ACTION_SUB;
-                clearText();
-            }
-        });
-        buttonMultiply.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                num1 = Double.parseDouble(textField.getText());
-                action=ACTION_MUL;
-                clearText();
-            }
-        });
-        buttonDivide.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                num1 = Double.parseDouble(textField.getText());
-                action=ACTION_DIV;
-                clearText();
-            }
-        });
-        buttonMod.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                num1 = Double.parseDouble(textField.getText());
-                action=ACTION_MOD;
-                clearText();
-            }
-        });
-        buttonSquare.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                double x = Double.parseDouble(textField.getText());
-                textField.setText(String.valueOf(Math.pow(x,2)));
-            }
-        });
-        buttonRoot.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                double x = Double.parseDouble(textField.getText());
-                textField.setText(String.valueOf(Math.sqrt(x)));
-            }
+        buttonRoot.addActionListener(e -> {
+            double x = Double.parseDouble(textField.getText());
+            textField.setText(String.valueOf(Math.sqrt(x)));
         });
     }
 }
